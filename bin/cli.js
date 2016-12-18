@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 /**
  * @file CLI
  * @author treelite(c.xinle@gmail.com)
