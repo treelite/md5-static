@@ -20,9 +20,7 @@ let outputDir = argv.d || sourceDir;
 
 let excludes = [];
 if (argv.x) {
-    excludes.push(path.join(sourceDir, argv.x));
-    let files = argv._.slice(1);
-    excludes = excludes.concat(files.map(file => path.join(sourceDir, file)));
+    excludes = argv.x.split(',').map(file => path.join(sourceDir, file.trim()));
 }
 
 let log = msg => console.log(msg);
