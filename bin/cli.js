@@ -15,15 +15,14 @@ let argv = yargs
     .demand(1)
     .argv;
 
-let cwd = process.cwd();
-let sourceDir = path.resolve(cwd, argv._[0]);
-let outputDir = path.resolve(cwd, argv.d || argv._[0]);
+let sourceDir = argv._[0];
+let outputDir = argv.d || sourceDir;
 
 let excludes = [];
 if (argv.x) {
-    excludes.push(path.resolve(cwd, sourceDir, argv.x));
+    excludes.push(path.join(sourceDir, argv.x));
     let files = argv._.slice(1);
-    excludes = excludes.concat(files.map(file => path.resolve(cwd, sourceDir, file)));
+    excludes = excludes.concat(files.map(file => path.join(sourceDir, file)));
 }
 
 let log = msg => console.log(msg);
@@ -31,6 +30,6 @@ seek(sourceDir, excludes)
     .then(rename)
     .then(files => save(files, sourceDir, outputDir, log))
     .then(
-        () => log('Finish'),
+        () => {},
         error => console.error(error)
     );
