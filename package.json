@@ -1,19 +1,20 @@
 {
   "name": "md5-static",
   "version": "0.1.0",
-  "description": "",
+  "description": "Add md5 summary as a part of file name for static files and modify the reference paths.",
   "bin": "./output/bin/cli.js",
   "scripts": {
     "compile": "babel ./ -d output --ignore node_modules,output",
     "pretest": "npm run compile",
-    "test": "jasmine JASMINE_CONFIG_PATH=test/jasmine.json"
+    "test": "jasmine JASMINE_CONFIG_PATH=test/jasmine.json",
+    "prepublish": "npm test"
   },
-  "keywords": [],
   "author": "treelite <c.xinle@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "md5": "^2.2.1",
     "mkdirp": "^0.5.1",
+    "seek-dep": "^0.1.0",
     "yargs": "^6.5.0"
   },
   "devDependencies": {
